@@ -75,7 +75,6 @@
   font-size: 1.1rem; line-height: 1; transition: border-color .2s, transform .15s;
 }
 .theme-toggle:hover { border-color: var(--accent); transform: translateY(-2px); }
-.overlay-theme { position: absolute; top: 20px; right: 72px; }
 .nav-actions { display: flex; align-items: center; gap: 10px; }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }

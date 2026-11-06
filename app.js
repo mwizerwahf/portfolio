@@ -60,21 +60,28 @@
     .join("");
 
   // Light / dark theme toggle
-  const themeBtns = document.querySelectorAll("[data-theme-toggle]");
-  const syncThemeBtn = () => {
-    const light = document.documentElement.getAttribute("data-theme") === "light";
-    themeBtns.forEach((b) => {
-      b.textContent = light ? "☀️" : "🌙";
-      b.setAttribute("aria-label", light ? "Switch to dark theme" : "Switch to light theme");
-    });
+  const themeBtn = document.querySelector("[data-theme-toggle]");
+  const root = document.documentElement;
+  const applyTheme = (t) => {
+    root.setAttribute("data-theme", t);
+    const light = t === "light";
+    themeBtn.textContent = light ? "☀️" : "🌙";
+    themeBtn.setAttribute("aria-label", light ? "Switch to dark theme" : "Switch to light theme");
   };
-  syncThemeBtn();
-  themeBtns.forEach((b) => b.addEventListener("click", () => {
-    const next = document.documentElement.getAttribute("data-theme") === "light" ? "dark" : "light";
-    document.documentElement.setAttribute("data-theme", next);
+  applyTheme(root.getAttribute("data-theme") || "dark");
+  themeBtn.addEventListener("click", () => {
+    const next = root.getAttribute("data-theme") === "light" ? "dark" : "light";
+    applyTheme(next);
     try { localStorage.setItem("theme", next); } catch (e) {}
-    syncThemeBtn();
-  }));
+  });
+  // Until the user picks a theme manually, keep following the device setting
+  const mq = window.matchMedia("(prefers-color-scheme: light)");
+  const onSystemChange = (e) => {
+    let saved = null;
+    try { saved = localStorage.getItem("theme"); } catch (err) {}
+    if (!saved) applyTheme(e.matches ? "light" : "dark");
+  };
+  mq.addEventListener ? mq.addEventListener("change", onSystemChange) : mq.addListener(onSystemChange);
 
   // Scroll reveal + power bars fill when visible
   document.querySelectorAll(".section-title, .about-grid, .contact-links").forEach((el) => el.classList.add("reveal"));
