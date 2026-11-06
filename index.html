@@ -36,7 +36,7 @@
       </ul>
     </nav>
     <div class="nav-actions">
-      <button class="theme-toggle" id="themeToggle" aria-label="Switch to light theme" title="Toggle light / dark theme">🌙</button>
+      <button class="theme-toggle" data-theme-togglearia-label="Switch to light theme" title="Toggle light / dark theme">🌙</button>
       <button class="nav-card-btn" data-open-pack aria-label="Open the booster pack to pull my superpower card">🃏 <span>Pull my card</span></button>
     </div>
   </header>
@@ -105,6 +105,7 @@
 
   <!-- ============ CREATIVE FEATURE: Booster pack + holo card ============ -->
   <div class="pack-overlay" id="packOverlay" role="dialog" aria-modal="true" aria-labelledby="packHeading" hidden>
+    <button class="theme-toggle overlay-theme" data-theme-toggle aria-label="Switch to light theme" title="Toggle light / dark theme">🌙</button>
     <button class="overlay-close" id="overlayClose" aria-label="Close">✕</button>
     <h2 class="sr-only" id="packHeading">Superpower card</h2>
 

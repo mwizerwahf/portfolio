@@ -60,19 +60,21 @@
     .join("");
 
   // Light / dark theme toggle
-  const themeBtn = $("themeToggle");
+  const themeBtns = document.querySelectorAll("[data-theme-toggle]");
   const syncThemeBtn = () => {
     const light = document.documentElement.getAttribute("data-theme") === "light";
-    themeBtn.textContent = light ? "☀️" : "🌙";
-    themeBtn.setAttribute("aria-label", light ? "Switch to dark theme" : "Switch to light theme");
+    themeBtns.forEach((b) => {
+      b.textContent = light ? "☀️" : "🌙";
+      b.setAttribute("aria-label", light ? "Switch to dark theme" : "Switch to light theme");
+    });
   };
   syncThemeBtn();
-  themeBtn.addEventListener("click", () => {
+  themeBtns.forEach((b) => b.addEventListener("click", () => {
     const next = document.documentElement.getAttribute("data-theme") === "light" ? "dark" : "light";
     document.documentElement.setAttribute("data-theme", next);
     try { localStorage.setItem("theme", next); } catch (e) {}
     syncThemeBtn();
-  });
+  }));
 
   // Scroll reveal + power bars fill when visible
   document.querySelectorAll(".section-title, .about-grid, .contact-links").forEach((el) => el.classList.add("reveal"));
