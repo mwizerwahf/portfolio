@@ -1,8 +1,9 @@
 # Pull My Superpower Card: a holographic trading-card portfolio on AWS Amplify
 
-**🔗 Live site:** 
+**🔗 Live site:** https://main.dq2wu3xall9cs.amplifyapp.com/
+**🔗 Live site Alternative:** https://tech.mwizerwa.com
 **💻 GitHub:** https://github.com/mwizerwahf/portfolio
-**🃏 Jump straight to the feature:** 
+**🃏 Jump straight to the feature:** https://main.dq2wu3xall9cs.amplifyapp.com/#card
 
 ---
 
@@ -11,7 +12,7 @@ Everyone growing up had a favourite trading card: the shiny one you protected in
 
 My site has the three core sections (**About Me**, **Tech Superpowers** and **Projects & Achievements**). Floating next to my name, though, is a **sealed booster pack**.
 
-<!--  -->
+![site hero](hero.png)
 
 ## The creative feature: "Pull My Superpower Card"
 **How visitors find it:** the pack floats and shimmers in the hero, with a glowing hint that says *"A sealed booster pack! Click to rip it open."* There's also a **🃏 Pull my card** button in the nav bar and a reminder in the Contact section. Normal navigation is never blocked. The feature opens in its own layer and closes with ✕, Escape, or "Back to portfolio".
@@ -23,7 +24,14 @@ My site has the three core sections (**About Me**, **Tech Superpowers** and **Pr
 4. **Flip it** to see my base stats (Networking, Security, Code and Music) and a **secret fun fact** about me.
 5. Every pull rolls a **rarity** (Rare, Epic or Legendary) and unlocks a different secret, so visitors are tempted to pull again. *(The first pull is always Legendary, because first impressions matter.)*
 
-<!--  -->
+**Card Front**
+![Card Front](card-front.png)
+
+**card back**
+![Card Back](card-back.png)
+
+**on mobile**
+![Mobile view](mobile-view.png)
 
 **Why it reveals something unique about me:** the fun facts, stats and weakness are personal. They're the things I'd tell you over coffee, not the things on my CV. I'm a network engineer doing an MSc at Carnegie Mellon University Africa, and I also play guitar and piano. A CV can't show both sides of that, but a character card can.
 
@@ -42,7 +50,10 @@ My site has the three core sections (**About Me**, **Tech Superpowers** and **Pr
 | **Amazon CloudFront** (via Amplify) | Serves the site quickly from edge locations. As a network engineer I care about latency, and that includes visitors in Africa |
 | **AWS IAM** | Amplify's service role, which grants only the permissions it needs to deploy |
 
-<!--  -->
+**Ammplify console**
+![alt text](amplify-console.png)
+**Amplify build**
+![alt text](amplify-build-settings.png)
 
 **Deployment flow:** `git push` → Amplify detects the commit → reads `amplify.yml` → deploys → live in about a minute.
 

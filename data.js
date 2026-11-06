@@ -65,7 +65,7 @@ window.PORTFOLIO = {
       emoji: "🃏",
       description: "A hand-built portfolio with a holographic trading-card easter egg, deployed on AWS Amplify Hosting with automatic CI/CD from GitHub.",
       tech: ["HTML", "CSS", "JavaScript", "AWS Amplify"],
-      link: "",   // add your live Amplify URL after deploying
+      link: "https://main.dq2wu3xall9cs.amplifyapp.com/",
       repo: "https://github.com/mwizerwahf/portfolio"
     }
   ],
@@ -81,7 +81,7 @@ window.PORTFOLIO = {
     initials: "MHF",
     class: "Network Guardian",
     element: "🌐 Network",
-    hp: 1500,     // a nod to the Ethernet MTU
+    hp: 1500,
     photo: "me.png",
     superpower: "Finds the root cause of any outage. (It's usually DNS.)",
     weakness: "An unlabeled cable. Must trace it.",

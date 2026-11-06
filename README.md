@@ -2,7 +2,7 @@
 
 My entry for the **AWS Student Builder Challenge: Build Your Tech Superpower**.
 
-**Live site:** https://YOUR-BRANCH.YOUR-APP-ID.amplifyapp.com  ← update after deploy
+**Live site:**  https://main.dq2wu3xall9cs.amplifyapp.com/
 
 ## The creative feature: Pull My Superpower Card 🃏
 A sealed booster pack floats on the home page (with a visible "Click to rip it open" hint, plus a **Pull my card** button in the nav).
