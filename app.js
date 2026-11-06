@@ -59,6 +59,21 @@
     .map((c) => `<a class="btn ${c.primary ? "btn-primary" : "btn-ghost"}" href="${esc(c.href)}" ${c.href.startsWith("http") ? 'target="_blank" rel="noopener"' : ""}>${c.label}</a>`)
     .join("");
 
+  // Light / dark theme toggle
+  const themeBtn = $("themeToggle");
+  const syncThemeBtn = () => {
+    const light = document.documentElement.getAttribute("data-theme") === "light";
+    themeBtn.textContent = light ? "☀️" : "🌙";
+    themeBtn.setAttribute("aria-label", light ? "Switch to dark theme" : "Switch to light theme");
+  };
+  syncThemeBtn();
+  themeBtn.addEventListener("click", () => {
+    const next = document.documentElement.getAttribute("data-theme") === "light" ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+    syncThemeBtn();
+  });
+
   // Scroll reveal + power bars fill when visible
   document.querySelectorAll(".section-title, .about-grid, .contact-links").forEach((el) => el.classList.add("reveal"));
   const io = new IntersectionObserver(

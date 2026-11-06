@@ -11,6 +11,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <script>
+    // Apply saved/system theme before first paint to avoid a flash
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem("theme"); } catch (e) {}
+      if (t !== "light" && t !== "dark") t = window.matchMedia && matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", t);
+    })();
+  </script>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -26,7 +35,10 @@
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
-    <button class="nav-card-btn" data-open-pack aria-label="Open the booster pack to pull my superpower card">🃏 <span>Pull my card</span></button>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Switch to light theme" title="Toggle light / dark theme">🌙</button>
+      <button class="nav-card-btn" data-open-pack aria-label="Open the booster pack to pull my superpower card">🃏 <span>Pull my card</span></button>
+    </div>
   </header>
 
   <main id="main">
@@ -155,7 +167,7 @@
 
       <div class="card-actions" id="cardActions">
         <button class="btn btn-ghost" id="flipBtn">↻ Flip card</button>
-        <button class="btn btn-ghost" id="againBtn">🔁 Pull again</button>
+        <button class="btn btn-ghost" id="againBtn">Pull again</button>
         <button class="btn btn-primary" id="doneBtn">Back to portfolio</button>
       </div>
       <p class="tilt-hint" id="tiltHint">Move your mouse (or tilt your phone) to catch the holo shine ✨</p>

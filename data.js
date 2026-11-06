@@ -6,7 +6,7 @@ window.PORTFOLIO = {
   shortName: "Frank",
   title: "Network Engineer · Cloud & Security Builder",
   location: "Kigali, Rwanda",
-  email: "mwizerwahonorefrank@gmail.com",
+  email: "info@mwizerwa.com",
   github: "https://github.com/mwizerwahf",
   linkedin: "https://www.linkedin.com/in/mwizerwahf/",
   resume: "",
