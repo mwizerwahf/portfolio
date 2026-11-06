@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio · Tech Superpowers</title>
+  <meta name="description" content="Personal portfolio — about me, tech superpowers, projects, and a collectible holographic superpower card." />
+  <meta property="og:title" content="My Tech Superpowers — Portfolio" />
+  <meta property="og:description" content="Open the booster pack and pull my holographic superpower card." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🃏</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="nav" id="top">
+    <a href="#top" class="nav-logo" id="navLogo">⚡</a>
+    <nav aria-label="Main">
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#superpowers">Superpowers</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <button class="nav-card-btn" data-open-pack aria-label="Open the booster pack to pull my superpower card">🃏 <span>Pull my card</span></button>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-grid"></div>
+      <div class="hero-content">
+        <p class="eyebrow" id="heroLocation"></p>
+        <h1><span class="hi">Hi, I'm</span> <span class="hero-name" id="heroName"></span></h1>
+        <p class="hero-title" id="heroTitle"></p>
+        <p class="hero-tagline" id="heroTagline"></p>
+        <div class="hero-ctas">
+          <a href="#projects" class="btn btn-primary">See my work</a>
+          <a href="#contact" class="btn btn-ghost">Get in touch</a>
+        </div>
+      </div>
+
+      <!-- Visible hint for the creative feature -->
+      <button class="pack-teaser" data-open-pack aria-label="A sealed booster pack. Click to open and reveal my superpower card.">
+        <div class="mini-pack">
+          <span class="mini-pack-shine"></span>
+          <span class="mini-pack-label">SUPERPOWER<br/>SERIES</span>
+          <span class="mini-pack-emoji">⚡</span>
+        </div>
+        <span class="teaser-hint">✨ A sealed booster pack! <strong>Click to rip it open</strong> ✨</span>
+      </button>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <h2 class="section-title"><span class="num">01</span> About Me</h2>
+      <div class="about-grid">
+        <div class="about-text" id="aboutText"></div>
+        <ul class="facts" id="quickFacts"></ul>
+      </div>
+    </section>
+
+    <!-- SUPERPOWERS -->
+    <section id="superpowers" class="section">
+      <h2 class="section-title"><span class="num">02</span> Tech Superpowers</h2>
+      <p class="section-sub">Every hero has a power level. Here's mine.</p>
+      <div class="powers" id="powers"></div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <h2 class="section-title"><span class="num">03</span> Projects &amp; Achievements</h2>
+      <div class="projects" id="projectList"></div>
+      <ul class="achievements" id="achievements"></ul>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section contact">
+      <h2 class="section-title"><span class="num">04</span> Let's Build Together</h2>
+      <p class="section-sub">Got an internship, a project, or just want to say hi? My inbox is open.</p>
+      <div class="contact-links" id="contactLinks"></div>
+      <p class="contact-hint">Psst — haven't pulled my card yet? <button class="link-btn" data-open-pack>Open the pack 🃏</button></p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Built by hand &amp; deployed on <strong>AWS Amplify Hosting</strong> · <span id="year"></span></p>
+  </footer>
+
+  <!-- ============ CREATIVE FEATURE: Booster pack + holo card ============ -->
+  <div class="pack-overlay" id="packOverlay" role="dialog" aria-modal="true" aria-labelledby="packHeading" hidden>
+    <button class="overlay-close" id="overlayClose" aria-label="Close">✕</button>
+    <h2 class="sr-only" id="packHeading">Superpower card</h2>
+
+    <div class="stage" id="stage">
+      <!-- the pack -->
+      <div class="pack" id="pack" tabindex="0" role="button" aria-label="Booster pack. Click or press Enter to rip it open.">
+        <div class="pack-top"><span class="pack-zigzag"></span></div>
+        <div class="pack-body">
+          <span class="pack-shine"></span>
+          <p class="pack-brand">TECH SUPERPOWERS</p>
+          <p class="pack-series">2026 · Cloud Edition</p>
+          <div class="pack-emblem">⚡</div>
+          <p class="pack-count">1 HOLO CARD INSIDE</p>
+        </div>
+      </div>
+      <p class="stage-hint" id="stageHint">Click the pack (or press Enter) to rip it open</p>
+
+      <!-- the card -->
+      <div class="card-wrap" id="cardWrap" aria-live="polite">
+        <div class="card" id="card" tabindex="0" role="button" aria-label="Your superpower card. Click or press Enter to flip.">
+          <!-- FRONT -->
+          <div class="card-face card-front">
+            <div class="holo"></div>
+            <div class="glare"></div>
+            <div class="card-head">
+              <span class="card-name" id="cardName"></span>
+              <span class="card-hp"><small>HP</small> <span id="cardHp"></span></span>
+            </div>
+            <div class="card-art">
+              <div class="card-avatar" id="cardAvatar"></div>
+              <span class="card-element" id="cardElement"></span>
+            </div>
+            <div class="card-class" id="cardClass"></div>
+            <div class="card-move">
+              <p class="move-label">⚡ Superpower</p>
+              <p id="cardPower"></p>
+            </div>
+            <div class="card-move">
+              <p class="move-label">💥 Signature move</p>
+              <p id="cardMove" class="mono"></p>
+            </div>
+            <div class="card-weak"><span>Weakness:</span> <span id="cardWeak"></span></div>
+            <p class="card-flavor" id="cardFlavor"></p>
+            <div class="card-foot"><span id="cardRarity" class="rarity"></span><span>#001/001 · flip ↻</span></div>
+          </div>
+          <!-- BACK -->
+          <div class="card-face card-back">
+            <div class="holo"></div>
+            <h3>Base Stats</h3>
+            <div id="cardStats" class="card-stats"></div>
+            <div class="secret">
+              <p class="move-label">🔓 Secret unlocked</p>
+              <p id="cardSecret"></p>
+            </div>
+            <p class="back-small">Pull again for a different secret</p>
+            <div class="card-foot"><span>Tech Superpowers TCG</span><span>flip ↻</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-actions" id="cardActions">
+        <button class="btn btn-ghost" id="flipBtn">↻ Flip card</button>
+        <button class="btn btn-ghost" id="againBtn">🔁 Pull again</button>
+        <button class="btn btn-primary" id="doneBtn">Back to portfolio</button>
+      </div>
+      <p class="tilt-hint" id="tiltHint">Move your mouse (or tilt your phone) to catch the holo shine ✨</p>
+    </div>
+  </div>
+
+  <canvas id="confetti" aria-hidden="true"></canvas>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script src="card.js"></script>
+</body>
+</html>
